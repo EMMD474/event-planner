@@ -24,9 +24,7 @@
                 <li><a href="#" class="nav-link active" data-page="events" id="nav-events">
                     <i class="ph ph-calendar-blank nav-icon"></i> Events
                 </a></li>
-                <li><a href="#" class="nav-link" data-page="register" id="nav-register">
-                    <i class="ph ph-note-pencil nav-icon"></i> Register
-                </a></li>
+
                 <li><a href="#" class="nav-link" data-page="feedback" id="nav-feedback">
                     <i class="ph ph-star nav-icon"></i> Feedback
                 </a></li>
@@ -94,57 +92,56 @@
         </div>
     </main>
 
-    <!-- ============ PAGE: REGISTRATION ============ -->
-    <section class="page" id="page-register">
-        <div class="container">
-            <div class="form-card">
-                <div class="form-header">
-                    <h2 class="section-title">Event Registration</h2>
-                    <p class="form-subtitle">Fill in your details to register for a campus event. All fields are required.</p>
+    <!-- ============ REGISTRATION MODAL ============ -->
+    <div class="modal-overlay hidden" id="register-modal-overlay">
+        <div class="modal form-modal" role="dialog" aria-modal="true" aria-labelledby="reg-modal-title">
+            <button class="modal-close-icon" id="reg-modal-close" aria-label="Close modal"><i class="ph ph-x"></i></button>
+            <div class="form-header">
+                <h2 class="section-title" id="reg-modal-title">Event Registration</h2>
+                <p class="form-subtitle">Fill in your details to register for a campus event. All fields are required.</p>
+            </div>
+
+            <form id="registration-form" novalidate>
+                <!-- Full Name -->
+                <div class="form-group" id="group-fullname">
+                    <label for="reg-fullname" class="form-label">Full Name</label>
+                    <input type="text" id="reg-fullname" class="form-input" placeholder="e.g. John Mwamba" required autocomplete="name">
+                    <span class="form-error" id="error-fullname"></span>
                 </div>
 
-                <form id="registration-form" novalidate>
-                    <!-- Full Name -->
-                    <div class="form-group" id="group-fullname">
-                        <label for="reg-fullname" class="form-label">Full Name</label>
-                        <input type="text" id="reg-fullname" class="form-input" placeholder="e.g. John Mwamba" required autocomplete="name">
-                        <span class="form-error" id="error-fullname"></span>
-                    </div>
+                <!-- Student ID -->
+                <div class="form-group" id="group-studentid">
+                    <label for="reg-studentid" class="form-label">Student ID</label>
+                    <input type="text" id="reg-studentid" class="form-input" placeholder="e.g. STU2024001" required>
+                    <span class="form-hint">Format: STU followed by 7 digits</span>
+                    <span class="form-error" id="error-studentid"></span>
+                </div>
 
-                    <!-- Student ID -->
-                    <div class="form-group" id="group-studentid">
-                        <label for="reg-studentid" class="form-label">Student ID</label>
-                        <input type="text" id="reg-studentid" class="form-input" placeholder="e.g. STU2024001" required>
-                        <span class="form-hint">Format: STU followed by 7 digits</span>
-                        <span class="form-error" id="error-studentid"></span>
-                    </div>
+                <!-- Email -->
+                <div class="form-group" id="group-email">
+                    <label for="reg-email" class="form-label">Email Address</label>
+                    <input type="email" id="reg-email" class="form-input" placeholder="e.g. john@university.ac.zm" required autocomplete="email">
+                    <span class="form-error" id="error-email"></span>
+                </div>
 
-                    <!-- Email -->
-                    <div class="form-group" id="group-email">
-                        <label for="reg-email" class="form-label">Email Address</label>
-                        <input type="email" id="reg-email" class="form-input" placeholder="e.g. john@university.ac.zm" required autocomplete="email">
-                        <span class="form-error" id="error-email"></span>
-                    </div>
+                <!-- Event Selection -->
+                <div class="form-group" id="group-event">
+                    <label for="reg-event" class="form-label">Select Event</label>
+                    <select id="reg-event" class="form-input form-select" required>
+                        <option value="">— Choose an event —</option>
+                        <!-- Options populated by JS -->
+                    </select>
+                    <span class="form-error" id="error-event"></span>
+                </div>
 
-                    <!-- Event Selection -->
-                    <div class="form-group" id="group-event">
-                        <label for="reg-event" class="form-label">Select Event</label>
-                        <select id="reg-event" class="form-input form-select" required>
-                            <option value="">— Choose an event —</option>
-                            <!-- Options populated by JS -->
-                        </select>
-                        <span class="form-error" id="error-event"></span>
-                    </div>
-
-                    <!-- Submit -->
-                    <button type="submit" class="btn btn-primary btn-full" id="reg-submit" disabled>
-                        <span class="btn-text">Register Now</span>
-                        <i class="ph ph-arrow-right btn-icon"></i>
-                    </button>
-                </form>
-            </div>
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary btn-full" id="reg-submit" disabled>
+                    <span class="btn-text">Register Now</span>
+                    <i class="ph ph-arrow-right btn-icon"></i>
+                </button>
+            </form>
         </div>
-    </section>
+    </div>
 
     <!-- ============ PAGE: FEEDBACK ============ -->
     <section class="page" id="page-feedback">

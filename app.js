@@ -181,7 +181,7 @@ function populateEventDropdowns() {
 
 // ─── REGISTER FROM CARD ───
 function registerForEvent(eventId) {
-    navigateTo('register');
+    $('#register-modal-overlay').classList.remove('hidden');
     regEvent.value = eventId;
     validateRegForm();
 }
@@ -271,6 +271,9 @@ regForm.addEventListener('submit', (e) => {
     if (!validateRegForm()) return;
 
     const eventName = regEvent.options[regEvent.selectedIndex].text;
+    
+    $('#register-modal-overlay').classList.add('hidden');
+
     showModal(
         '<i class="ph-fill ph-confetti"></i>',
         'Registration Successful!',
@@ -372,6 +375,15 @@ modalCloseBtn.addEventListener('click', () => {
 
 modalOverlay.addEventListener('click', (e) => {
     if (e.target === modalOverlay) modalOverlay.classList.add('hidden');
+});
+
+// Registration Modal specific close logic
+const regModalOverlay = $('#register-modal-overlay');
+$('#reg-modal-close').addEventListener('click', () => {
+    regModalOverlay.classList.add('hidden');
+});
+regModalOverlay.addEventListener('click', (e) => {
+    if (e.target === regModalOverlay) regModalOverlay.classList.add('hidden');
 });
 
 // ─── TOAST ───
