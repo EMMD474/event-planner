@@ -187,7 +187,7 @@ function registerForEvent(eventId) {
 }
 
 function feedbackForEvent(eventId) {
-    navigateTo('feedback');
+    $('#feedback-modal-overlay').classList.remove('hidden');
     fbEvent.value = eventId;
     validateFbForm();
 }
@@ -351,6 +351,7 @@ fbForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validateFbForm()) return;
 
+    $('#feedback-modal-overlay').classList.add('hidden');
     showToast('<i class="ph-fill ph-check-circle"></i>', 'Thank you! Your feedback has been submitted.');
 
     fbForm.reset();
@@ -384,6 +385,15 @@ $('#reg-modal-close').addEventListener('click', () => {
 });
 regModalOverlay.addEventListener('click', (e) => {
     if (e.target === regModalOverlay) regModalOverlay.classList.add('hidden');
+});
+
+// Feedback Modal specific close logic
+const fbModalOverlay = $('#feedback-modal-overlay');
+$('#fb-modal-close').addEventListener('click', () => {
+    fbModalOverlay.classList.add('hidden');
+});
+fbModalOverlay.addEventListener('click', (e) => {
+    if (e.target === fbModalOverlay) fbModalOverlay.classList.add('hidden');
 });
 
 // ─── TOAST ───

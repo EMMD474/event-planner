@@ -25,9 +25,7 @@
                     <i class="ph ph-calendar-blank nav-icon"></i> Events
                 </a></li>
 
-                <li><a href="#" class="nav-link" data-page="feedback" id="nav-feedback">
-                    <i class="ph ph-star nav-icon"></i> Feedback
-                </a></li>
+
             </ul>
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
                 <span></span><span></span><span></span>
@@ -143,56 +141,55 @@
         </div>
     </div>
 
-    <!-- ============ PAGE: FEEDBACK ============ -->
-    <section class="page" id="page-feedback">
-        <div class="container">
-            <div class="form-card">
-                <div class="form-header">
-                    <h2 class="section-title">Event Feedback</h2>
-                    <p class="form-subtitle">Help us improve! Rate and review an event you attended.</p>
+    <!-- ============ FEEDBACK MODAL ============ -->
+    <div class="modal-overlay hidden" id="feedback-modal-overlay">
+        <div class="modal form-modal" role="dialog" aria-modal="true" aria-labelledby="fb-modal-title">
+            <button class="modal-close-icon" id="fb-modal-close" aria-label="Close modal"><i class="ph ph-x"></i></button>
+            <div class="form-header">
+                <h2 class="section-title" id="fb-modal-title">Event Feedback</h2>
+                <p class="form-subtitle">Help us improve! Rate and review an event you attended.</p>
+            </div>
+
+            <form id="feedback-form" novalidate>
+                <!-- Event Selection -->
+                <div class="form-group" id="group-fb-event">
+                    <label for="fb-event" class="form-label">Select Event</label>
+                    <select id="fb-event" class="form-input form-select" required>
+                        <option value="">— Choose an event —</option>
+                    </select>
+                    <span class="form-error" id="error-fb-event"></span>
                 </div>
 
-                <form id="feedback-form" novalidate>
-                    <!-- Event Selection -->
-                    <div class="form-group" id="group-fb-event">
-                        <label for="fb-event" class="form-label">Select Event</label>
-                        <select id="fb-event" class="form-input form-select" required>
-                            <option value="">— Choose an event —</option>
-                        </select>
-                        <span class="form-error" id="error-fb-event"></span>
+                <!-- Star Rating -->
+                <div class="form-group">
+                    <label class="form-label">Your Rating</label>
+                    <div class="star-rating" id="star-rating" role="radiogroup" aria-label="Event rating">
+                        <button type="button" class="star" data-value="1" aria-label="1 star"><i class="ph-fill ph-star"></i></button>
+                        <button type="button" class="star" data-value="2" aria-label="2 stars"><i class="ph-fill ph-star"></i></button>
+                        <button type="button" class="star" data-value="3" aria-label="3 stars"><i class="ph-fill ph-star"></i></button>
+                        <button type="button" class="star" data-value="4" aria-label="4 stars"><i class="ph-fill ph-star"></i></button>
+                        <button type="button" class="star" data-value="5" aria-label="5 stars"><i class="ph-fill ph-star"></i></button>
                     </div>
+                    <span class="rating-text" id="rating-text">Click a star to rate</span>
+                    <span class="form-error" id="error-rating"></span>
+                </div>
 
-                    <!-- Star Rating -->
-                    <div class="form-group">
-                        <label class="form-label">Your Rating</label>
-                        <div class="star-rating" id="star-rating" role="radiogroup" aria-label="Event rating">
-                            <button type="button" class="star" data-value="1" aria-label="1 star"><i class="ph-fill ph-star"></i></button>
-                            <button type="button" class="star" data-value="2" aria-label="2 stars"><i class="ph-fill ph-star"></i></button>
-                            <button type="button" class="star" data-value="3" aria-label="3 stars"><i class="ph-fill ph-star"></i></button>
-                            <button type="button" class="star" data-value="4" aria-label="4 stars"><i class="ph-fill ph-star"></i></button>
-                            <button type="button" class="star" data-value="5" aria-label="5 stars"><i class="ph-fill ph-star"></i></button>
-                        </div>
-                        <span class="rating-text" id="rating-text">Click a star to rate</span>
-                        <span class="form-error" id="error-rating"></span>
-                    </div>
+                <!-- Feedback Text -->
+                <div class="form-group" id="group-fb-comment">
+                    <label for="fb-comment" class="form-label">Your Feedback</label>
+                    <textarea id="fb-comment" class="form-input form-textarea" rows="4" placeholder="What did you enjoy? What could be improved?" required></textarea>
+                    <span class="char-count"><span id="char-count">0</span>/500</span>
+                    <span class="form-error" id="error-fb-comment"></span>
+                </div>
 
-                    <!-- Feedback Text -->
-                    <div class="form-group" id="group-fb-comment">
-                        <label for="fb-comment" class="form-label">Your Feedback</label>
-                        <textarea id="fb-comment" class="form-input form-textarea" rows="4" placeholder="What did you enjoy? What could be improved?" required></textarea>
-                        <span class="char-count"><span id="char-count">0</span>/500</span>
-                        <span class="form-error" id="error-fb-comment"></span>
-                    </div>
-
-                    <!-- Submit -->
-                    <button type="submit" class="btn btn-primary btn-full" id="fb-submit" disabled>
-                        <span class="btn-text">Submit Feedback</span>
-                        <i class="ph ph-arrow-right btn-icon"></i>
-                    </button>
-                </form>
-            </div>
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary btn-full" id="fb-submit" disabled>
+                    <span class="btn-text">Submit Feedback</span>
+                    <i class="ph ph-arrow-right btn-icon"></i>
+                </button>
+            </form>
         </div>
-    </section>
+    </div>
 
     <!-- ============ SUCCESS MODAL ============ -->
     <div class="modal-overlay hidden" id="modal-overlay">
