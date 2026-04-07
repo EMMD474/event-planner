@@ -44,15 +44,17 @@
   --radius-lg: 1rem;
   --radius-xl: 1.25rem;
   --radius-full: 50rem;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.5);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 20px var(--accent-glow);
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --duration: 0.25s;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -86,7 +88,9 @@ button {
   color: inherit;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: inherit;
 }
@@ -306,6 +310,9 @@ input, select, textarea {
   color: var(--text-primary);
   width: 100%;
   font-size: var(--size-sm);
+}
+.search-bar #search-input::-moz-placeholder {
+  color: var(--text-muted);
 }
 .search-bar #search-input::placeholder {
   color: var(--text-muted);
@@ -572,7 +579,9 @@ input, select, textarea {
 }
 
 .form-select {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='2' fill='none'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 16px center;
@@ -871,6 +880,4 @@ input, select, textarea {
     white-space: nowrap;
     flex-shrink: 0;
   }
-}
-
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */
