@@ -1,8 +1,6 @@
-/* ========================================
-   CampusHub — Application Logic
-   ======================================== */
+/* CampusHub Application Logic */
 
-// ─── EVENT DATA ───
+// Event Data
 const events = [
     { id: 1, title: "Web Development Workshop", category: "workshop", date: "2026-04-15", time: "09:00 – 12:00", venue: "Computer Lab A, Block 3", spots: 30, spotsLeft: 8, description: "Learn modern HTML, CSS, and JavaScript fundamentals. Hands-on session building responsive websites from scratch." },
     { id: 2, title: "AI & Machine Learning Seminar", category: "seminar", date: "2026-04-18", time: "14:00 – 16:00", venue: "Lecture Hall 2", spots: 120, spotsLeft: 45, description: "Industry experts discuss the latest trends in artificial intelligence and how students can prepare for AI careers." },
@@ -16,7 +14,7 @@ const events = [
     { id: 10, title: "Entrepreneurship Talk Series", category: "seminar", date: "2026-05-08", time: "15:00 – 17:00", venue: "Business School Auditorium", spots: 100, spotsLeft: 40, description: "Successful young entrepreneurs share their journey from campus idea to thriving business." }
 ];
 
-// ─── DOM REFERENCES ───
+// DOM References
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
 
@@ -57,18 +55,18 @@ const toast = $('#toast');
 const toastIcon = $('#toast-icon');
 const toastMessage = $('#toast-message');
 
-// ─── STATE ───
+// Global State
 let currentFilter = 'all';
 let currentSearch = '';
 let selectedRating = 0;
 
-// ─── UTILITY ───
+// Utilities
 function formatDate(dateStr) {
     const d = new Date(dateStr + 'T00:00:00');
     return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
 }
 
-// ─── NAVIGATION (SPA ROUTING) ───
+// SPA Routing
 function navigateTo(page) {
     // Update nav links
     navLinks.forEach(link => {
@@ -103,16 +101,16 @@ mobileMenuBtn.addEventListener('click', () => {
     navLinksList.classList.toggle('open');
 });
 
-// ─── RENDER EVENT CARDS ───
+// Rendering Logic
 function renderEvents() {
     let filtered = events;
 
-    // Filter by category
+
     if (currentFilter !== 'all') {
         filtered = filtered.filter(ev => ev.category === currentFilter);
     }
 
-    // Filter by search
+
     if (currentSearch) {
         const q = currentSearch.toLowerCase();
         filtered = filtered.filter(ev =>
@@ -156,7 +154,7 @@ function getCategoryLabel(cat) {
     return labels[cat] || cat;
 }
 
-// ─── CATEGORY FILTERING ───
+// Event Listeners
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
@@ -166,20 +164,20 @@ filterBtns.forEach(btn => {
     });
 });
 
-// ─── SEARCH ───
+
 searchInput.addEventListener('input', (e) => {
     currentSearch = e.target.value;
     renderEvents();
 });
 
-// ─── POPULATE EVENT DROPDOWNS ───
+
 function populateEventDropdowns() {
     const options = events.map(ev => `<option value="${ev.id}">${ev.title} — ${formatDate(ev.date)}</option>`).join('');
     regEvent.innerHTML = `<option value="">— Choose an event —</option>${options}`;
     fbEvent.innerHTML = `<option value="">— Choose an event —</option>${options}`;
 }
 
-// ─── REGISTER FROM CARD ───
+// Modal Triggers
 function registerForEvent(eventId) {
     $('#register-modal-overlay').classList.remove('hidden');
     regEvent.value = eventId;
@@ -192,8 +190,7 @@ function feedbackForEvent(eventId) {
     validateFbForm();
 }
 
-// ─── REGISTRATION FORM VALIDATION ───
-// HCI: Error Prevention — disable submit until all fields valid, show inline errors
+// Form Validation
 function validateRegForm() {
     const errors = {};
     let valid = true;
@@ -259,13 +256,13 @@ function updateFieldState(input, errorSel, errorMsg) {
     }
 }
 
-// Live validation on input
+
 [regFullname, regStudentId, regEmail, regEvent].forEach(el => {
     el.addEventListener('input', validateRegForm);
     el.addEventListener('change', validateRegForm);
 });
 
-// Submit registration
+
 regForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validateRegForm()) return;
@@ -284,8 +281,8 @@ regForm.addEventListener('submit', (e) => {
     $$('#registration-form .form-input').forEach(el => el.classList.remove('valid', 'error'));
 });
 
-// ─── FEEDBACK FORM ───
-// Star rating
+// Feedback Logic
+
 const ratingLabels = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
 
 starBtns.forEach(star => {
@@ -316,7 +313,7 @@ function updateStars() {
         : 'Click a star to rate';
 }
 
-// Char count
+
 fbComment.addEventListener('input', () => {
     const len = fbComment.value.length;
     charCount.textContent = len;
@@ -346,7 +343,7 @@ function validateFbForm() {
 
 fbEvent.addEventListener('change', validateFbForm);
 
-// Submit feedback
+
 fbForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validateFbForm()) return;
@@ -362,7 +359,7 @@ fbForm.addEventListener('submit', (e) => {
     $$('#feedback-form .form-input').forEach(el => el.classList.remove('valid', 'error'));
 });
 
-// ─── MODAL ───
+// Modals & Toasts
 function showModal(icon, title, message) {
     modalIcon.innerHTML = icon;
     modalTitle.textContent = title;
@@ -378,7 +375,7 @@ modalOverlay.addEventListener('click', (e) => {
     if (e.target === modalOverlay) modalOverlay.classList.add('hidden');
 });
 
-// Registration Modal specific close logic
+
 const regModalOverlay = $('#register-modal-overlay');
 $('#reg-modal-close').addEventListener('click', () => {
     regModalOverlay.classList.add('hidden');
@@ -387,7 +384,7 @@ regModalOverlay.addEventListener('click', (e) => {
     if (e.target === regModalOverlay) regModalOverlay.classList.add('hidden');
 });
 
-// Feedback Modal specific close logic
+
 const fbModalOverlay = $('#feedback-modal-overlay');
 $('#fb-modal-close').addEventListener('click', () => {
     fbModalOverlay.classList.add('hidden');
@@ -396,7 +393,7 @@ fbModalOverlay.addEventListener('click', (e) => {
     if (e.target === fbModalOverlay) fbModalOverlay.classList.add('hidden');
 });
 
-// ─── TOAST ───
+
 function showToast(icon, message) {
     toastIcon.innerHTML = icon;
     toastMessage.textContent = message;
@@ -408,12 +405,12 @@ function showToast(icon, message) {
     }, 3500);
 }
 
-// ─── NAVBAR SCROLL EFFECT ───
+
 window.addEventListener('scroll', () => {
     $('#navbar').classList.toggle('scrolled', window.scrollY > 20);
 });
 
-// ─── INIT ───
+// Initialization
 document.addEventListener('DOMContentLoaded', () => {
     populateEventDropdowns();
     renderEvents();
