@@ -138,9 +138,9 @@ function renderEvents() {
             </div>
             <h3 class="card-title">${ev.title}</h3>
             <div class="card-meta">
-                <span>📅 ${formatDate(ev.date)}</span>
-                <span>🕐 ${ev.time}</span>
-                <span>📍 ${ev.venue}</span>
+                <span><i class="ph ph-calendar-blank"></i> ${formatDate(ev.date)}</span>
+                <span><i class="ph ph-clock"></i> ${ev.time}</span>
+                <span><i class="ph ph-map-pin"></i> ${ev.venue}</span>
             </div>
             <p class="card-desc">${ev.description}</p>
             <div class="card-actions">
@@ -152,7 +152,7 @@ function renderEvents() {
 }
 
 function getCategoryLabel(cat) {
-    const labels = { workshop: '🛠 Workshop', seminar: '🎤 Seminar', sports: '⚽ Sports', club: '🎭 Club' };
+    const labels = { workshop: '<i class="ph ph-wrench"></i> Workshop', seminar: '<i class="ph ph-microphone-stage"></i> Seminar', sports: '<i class="ph ph-soccer-ball"></i> Sports', club: '<i class="ph ph-mask-happy"></i> Club' };
     return labels[cat] || cat;
 }
 
@@ -272,7 +272,7 @@ regForm.addEventListener('submit', (e) => {
 
     const eventName = regEvent.options[regEvent.selectedIndex].text;
     showModal(
-        '🎉',
+        '<i class="ph-fill ph-confetti"></i>',
         'Registration Successful!',
         `You have been registered for <strong>${eventName.split(' — ')[0]}</strong>. Check your email for confirmation details.`
     );
@@ -348,7 +348,7 @@ fbForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validateFbForm()) return;
 
-    showToast('✅', 'Thank you! Your feedback has been submitted.');
+    showToast('<i class="ph-fill ph-check-circle"></i>', 'Thank you! Your feedback has been submitted.');
 
     fbForm.reset();
     selectedRating = 0;
@@ -360,7 +360,7 @@ fbForm.addEventListener('submit', (e) => {
 
 // ─── MODAL ───
 function showModal(icon, title, message) {
-    modalIcon.textContent = icon;
+    modalIcon.innerHTML = icon;
     modalTitle.textContent = title;
     modalMessage.innerHTML = message;
     modalOverlay.classList.remove('hidden');
@@ -376,7 +376,7 @@ modalOverlay.addEventListener('click', (e) => {
 
 // ─── TOAST ───
 function showToast(icon, message) {
-    toastIcon.textContent = icon;
+    toastIcon.innerHTML = icon;
     toastMessage.textContent = message;
     toast.classList.remove('hidden', 'toast-exit');
 

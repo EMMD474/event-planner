@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,18 +17,18 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo" id="logo-link">
-                <span class="logo-icon">🎓</span>
+                <i class="ph-fill ph-graduation-cap logo-icon"></i>
                 <span class="logo-text">Campus<span class="logo-accent">Hub</span></span>
             </a>
             <ul class="nav-links">
                 <li><a href="#" class="nav-link active" data-page="events" id="nav-events">
-                    <span class="nav-icon">📅</span> Events
+                    <i class="ph ph-calendar-blank nav-icon"></i> Events
                 </a></li>
                 <li><a href="#" class="nav-link" data-page="register" id="nav-register">
-                    <span class="nav-icon">📝</span> Register
+                    <i class="ph ph-note-pencil nav-icon"></i> Register
                 </a></li>
                 <li><a href="#" class="nav-link" data-page="feedback" id="nav-feedback">
-                    <span class="nav-icon">⭐</span> Feedback
+                    <i class="ph ph-star nav-icon"></i> Feedback
                 </a></li>
             </ul>
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
@@ -65,7 +66,7 @@
             <div class="section-header">
                 <h2 class="section-title">Upcoming Events</h2>
                 <div class="search-bar" id="search-bar">
-                    <span class="search-icon">🔍</span>
+                    <i class="ph ph-magnifying-glass search-icon"></i>
                     <input type="text" id="search-input" placeholder="Search events..." aria-label="Search events">
                 </div>
             </div>
@@ -73,10 +74,10 @@
             <!-- Category Filters -->
             <div class="filter-bar" id="filter-bar">
                 <button class="filter-btn active" data-category="all" id="filter-all">All</button>
-                <button class="filter-btn" data-category="workshop" id="filter-workshop">🛠 Workshops</button>
-                <button class="filter-btn" data-category="seminar" id="filter-seminar">🎤 Seminars</button>
-                <button class="filter-btn" data-category="sports" id="filter-sports">⚽ Sports</button>
-                <button class="filter-btn" data-category="club" id="filter-club">🎭 Club Events</button>
+                <button class="filter-btn" data-category="workshop" id="filter-workshop"><i class="ph ph-wrench"></i> Workshops</button>
+                <button class="filter-btn" data-category="seminar" id="filter-seminar"><i class="ph ph-microphone-stage"></i> Seminars</button>
+                <button class="filter-btn" data-category="sports" id="filter-sports"><i class="ph ph-soccer-ball"></i> Sports</button>
+                <button class="filter-btn" data-category="club" id="filter-club"><i class="ph ph-mask-happy"></i> Club Events</button>
             </div>
 
             <!-- Event Cards Grid -->
@@ -86,7 +87,7 @@
 
             <!-- Empty State -->
             <div class="empty-state hidden" id="empty-state">
-                <span class="empty-icon">🔎</span>
+                <i class="ph ph-magnifying-glass empty-icon"></i>
                 <h3>No events found</h3>
                 <p>Try adjusting your search or filter criteria.</p>
             </div>
@@ -138,7 +139,7 @@
                     <!-- Submit -->
                     <button type="submit" class="btn btn-primary btn-full" id="reg-submit" disabled>
                         <span class="btn-text">Register Now</span>
-                        <span class="btn-icon">→</span>
+                        <i class="ph ph-arrow-right btn-icon"></i>
                     </button>
                 </form>
             </div>
@@ -168,11 +169,11 @@
                     <div class="form-group">
                         <label class="form-label">Your Rating</label>
                         <div class="star-rating" id="star-rating" role="radiogroup" aria-label="Event rating">
-                            <button type="button" class="star" data-value="1" aria-label="1 star">★</button>
-                            <button type="button" class="star" data-value="2" aria-label="2 stars">★</button>
-                            <button type="button" class="star" data-value="3" aria-label="3 stars">★</button>
-                            <button type="button" class="star" data-value="4" aria-label="4 stars">★</button>
-                            <button type="button" class="star" data-value="5" aria-label="5 stars">★</button>
+                            <button type="button" class="star" data-value="1" aria-label="1 star"><i class="ph-fill ph-star"></i></button>
+                            <button type="button" class="star" data-value="2" aria-label="2 stars"><i class="ph-fill ph-star"></i></button>
+                            <button type="button" class="star" data-value="3" aria-label="3 stars"><i class="ph-fill ph-star"></i></button>
+                            <button type="button" class="star" data-value="4" aria-label="4 stars"><i class="ph-fill ph-star"></i></button>
+                            <button type="button" class="star" data-value="5" aria-label="5 stars"><i class="ph-fill ph-star"></i></button>
                         </div>
                         <span class="rating-text" id="rating-text">Click a star to rate</span>
                         <span class="form-error" id="error-rating"></span>
@@ -189,7 +190,7 @@
                     <!-- Submit -->
                     <button type="submit" class="btn btn-primary btn-full" id="fb-submit" disabled>
                         <span class="btn-text">Submit Feedback</span>
-                        <span class="btn-icon">→</span>
+                        <i class="ph ph-arrow-right btn-icon"></i>
                     </button>
                 </form>
             </div>
@@ -199,7 +200,7 @@
     <!-- ============ SUCCESS MODAL ============ -->
     <div class="modal-overlay hidden" id="modal-overlay">
         <div class="modal" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-            <div class="modal-icon" id="modal-icon">✅</div>
+            <div class="modal-icon" id="modal-icon"><i class="ph-fill ph-check-circle"></i></div>
             <h3 class="modal-title" id="modal-title">Success!</h3>
             <p class="modal-message" id="modal-message">Your action has been completed successfully.</p>
             <button class="btn btn-primary" id="modal-close-btn">Got it</button>
@@ -208,7 +209,7 @@
 
     <!-- ============ TOAST ============ -->
     <div class="toast hidden" id="toast" role="alert" aria-live="polite">
-        <span class="toast-icon" id="toast-icon">✅</span>
+        <span class="toast-icon" id="toast-icon"><i class="ph-fill ph-check-circle"></i></span>
         <span class="toast-message" id="toast-message">Action completed</span>
     </div>
 
