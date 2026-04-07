@@ -16,23 +16,24 @@
 - Brief mention of how goals map to HCI principles
 
 ### Slide 3: Wireframes / Design Process
-- Show the three screens: Event Listing, Registration, Feedback
+- Show the single-page layout: Events listing with Registration and Feedback modals
 - Explain your design decisions:
   - Dark theme for reduced eye strain
   - Card-based layout for scannability
+  - Modal-based flows so users never leave the events page
   - Consistent colour-coded categories
 
 ### Slide 4: Live Prototype Demo (or screenshots)
 - **Demo Flow 1:** Browse events → filter by category → search
 - **Demo Flow 2:** Click "Register" on a card → fill form → see validation → submit → success modal
-- **Demo Flow 3:** Navigate to Feedback → select event → click stars → type comment → submit → toast notification
+- **Demo Flow 3:** Click "Give Feedback" on any event card → select event in dropdown → click stars → type comment → submit → toast notification
 
 ### Slide 5: Usability Testing Findings
 - Tested with 3 peers using think-aloud protocol
-- Three issues found:
-  1. Student ID format unclear (fixed)
-  2. Star rating not obviously clickable (fixed)
-  3. No auto-redirect after registration (noted for improvement)
+- Three issues found and all resolved:
+  1. Student ID format unclear (fixed — format hint added below field)
+  2. Star rating not obviously clickable (fixed — "Click a star to rate" prompt added)
+  3. No way back to events after registering (resolved — registration is now a modal, closing it returns to the events listing)
 
 ### Slide 6: HCI Justification
 - **Consistency:** Uniform buttons, navigation, card layouts, colour coding

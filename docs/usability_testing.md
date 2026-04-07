@@ -20,7 +20,7 @@
 |---|-------|----------|-------------------------------|----------------------|
 | 1 | **Student ID format unclear** — 2 out of 3 participants typed their ID number without the "STU" prefix and were confused by the error message. | High | **Error Prevention** — the expected format was not immediately obvious despite the placeholder text. | Add a clearer format hint below the field (e.g., "Format: STU followed by 7 digits") and show an example in the label. ✅ *Fixed in current version.* |
 | 2 | **Star rating not obviously clickable** — 1 participant hovered over the stars but did not realise they could click them until prompted. | Medium | **Visibility & Feedback** — the stars appeared decorative rather than interactive. | Add a "Click a star to rate" prompt below the stars and change the cursor to a pointer on hover. ✅ *Fixed in current version.* |
-| 3 | **No way to return to events after registering** — After the success modal closed, participants were still on the registration page and had to manually click "Events" in the nav. | Low | **Simplicity** — the user expected the flow to complete by returning them to the listing. | Add a "Browse More Events" button in the success modal, or auto-redirect to the events page after 3 seconds. *Recommended for next iteration.* |
+| 3 | **No way to return to events after registering** — After the success modal closed, participants were still on the registration page and had to manually click "Events" in the nav. | Low | **Simplicity** — the user expected the flow to complete by returning them to the listing. | Resolved by redesigning registration as a modal overlay on the events page — closing the modal or clicking "Got it" on the success confirmation returns users directly to the event listing without any navigation. ✅ *Resolved in current version by architecture change.* |
 
 ---
 
@@ -36,4 +36,4 @@
 
 ## Summary
 
-The prototype performed well overall. Participants found the category filters and event cards intuitive. The two high-impact issues (Student ID format and star rating visibility) were addressed in the current version. The navigation issue after registration is noted as an improvement for the next iteration.
+The prototype performed well overall. Participants found the category filters and event cards intuitive. All three issues have been resolved in the current version: the Student ID format hint was clarified, the star rating gained a visible "Click a star to rate" prompt, and the navigation issue after registration was eliminated by moving the registration flow into a modal overlay on the events page.
