@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Campus Event Management System — Browse, register for, and give feedback on campus events including workshops, seminars, sports activities, and club events.">
+    <title>CampusHub — Event Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" id="logo-link">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">Campus<span class="logo-accent">Hub</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" data-page="events" id="nav-events">
+                    <span class="nav-icon">📅</span> Events
+                </a></li>
+                <li><a href="#" class="nav-link" data-page="register" id="nav-register">
+                    <span class="nav-icon">📝</span> Register
+                </a></li>
+                <li><a href="#" class="nav-link" data-page="feedback" id="nav-feedback">
+                    <span class="nav-icon">⭐</span> Feedback
+                </a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ============ HERO SECTION ============ -->
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Discover Campus <span class="gradient-text">Events</span></h1>
+            <p class="hero-subtitle">Browse, register, and share your experience — all in one place.</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="stat-events">12</span>
+                    <span class="stat-label">Active Events</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="stat-registered">248</span>
+                    <span class="stat-label">Registrations</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="stat-feedback">89</span>
+                    <span class="stat-label">Reviews</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-decoration"></div>
+    </header>
+
+    <!-- ============ PAGE: EVENTS LISTING ============ -->
+    <main class="page active" id="page-events">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div class="search-bar" id="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="search-input" placeholder="Search events..." aria-label="Search events">
+                </div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="filter-bar" id="filter-bar">
+                <button class="filter-btn active" data-category="all" id="filter-all">All</button>
+                <button class="filter-btn" data-category="workshop" id="filter-workshop">🛠 Workshops</button>
+                <button class="filter-btn" data-category="seminar" id="filter-seminar">🎤 Seminars</button>
+                <button class="filter-btn" data-category="sports" id="filter-sports">⚽ Sports</button>
+                <button class="filter-btn" data-category="club" id="filter-club">🎭 Club Events</button>
+            </div>
+
+            <!-- Event Cards Grid -->
+            <div class="events-grid" id="events-grid">
+                <!-- Cards rendered by JS -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state hidden" id="empty-state">
+                <span class="empty-icon">🔎</span>
+                <h3>No events found</h3>
+                <p>Try adjusting your search or filter criteria.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============ PAGE: REGISTRATION ============ -->
+    <section class="page" id="page-register">
+        <div class="container">
+            <div class="form-card">
+                <div class="form-header">
+                    <h2 class="section-title">Event Registration</h2>
+                    <p class="form-subtitle">Fill in your details to register for a campus event. All fields are required.</p>
+                </div>
+
+                <form id="registration-form" novalidate>
+                    <!-- Full Name -->
+                    <div class="form-group" id="group-fullname">
+                        <label for="reg-fullname" class="form-label">Full Name</label>
+                        <input type="text" id="reg-fullname" class="form-input" placeholder="e.g. John Mwamba" required autocomplete="name">
+                        <span class="form-error" id="error-fullname"></span>
+                    </div>
+
+                    <!-- Student ID -->
+                    <div class="form-group" id="group-studentid">
+                        <label for="reg-studentid" class="form-label">Student ID</label>
+                        <input type="text" id="reg-studentid" class="form-input" placeholder="e.g. STU2024001" required>
+                        <span class="form-hint">Format: STU followed by 7 digits</span>
+                        <span class="form-error" id="error-studentid"></span>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group" id="group-email">
+                        <label for="reg-email" class="form-label">Email Address</label>
+                        <input type="email" id="reg-email" class="form-input" placeholder="e.g. john@university.ac.zm" required autocomplete="email">
+                        <span class="form-error" id="error-email"></span>
+                    </div>
+
+                    <!-- Event Selection -->
+                    <div class="form-group" id="group-event">
+                        <label for="reg-event" class="form-label">Select Event</label>
+                        <select id="reg-event" class="form-input form-select" required>
+                            <option value="">— Choose an event —</option>
+                            <!-- Options populated by JS -->
+                        </select>
+                        <span class="form-error" id="error-event"></span>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="btn btn-primary btn-full" id="reg-submit" disabled>
+                        <span class="btn-text">Register Now</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PAGE: FEEDBACK ============ -->
+    <section class="page" id="page-feedback">
+        <div class="container">
+            <div class="form-card">
+                <div class="form-header">
+                    <h2 class="section-title">Event Feedback</h2>
+                    <p class="form-subtitle">Help us improve! Rate and review an event you attended.</p>
+                </div>
+
+                <form id="feedback-form" novalidate>
+                    <!-- Event Selection -->
+                    <div class="form-group" id="group-fb-event">
+                        <label for="fb-event" class="form-label">Select Event</label>
+                        <select id="fb-event" class="form-input form-select" required>
+                            <option value="">— Choose an event —</option>
+                        </select>
+                        <span class="form-error" id="error-fb-event"></span>
+                    </div>
+
+                    <!-- Star Rating -->
+                    <div class="form-group">
+                        <label class="form-label">Your Rating</label>
+                        <div class="star-rating" id="star-rating" role="radiogroup" aria-label="Event rating">
+                            <button type="button" class="star" data-value="1" aria-label="1 star">★</button>
+                            <button type="button" class="star" data-value="2" aria-label="2 stars">★</button>
+                            <button type="button" class="star" data-value="3" aria-label="3 stars">★</button>
+                            <button type="button" class="star" data-value="4" aria-label="4 stars">★</button>
+                            <button type="button" class="star" data-value="5" aria-label="5 stars">★</button>
+                        </div>
+                        <span class="rating-text" id="rating-text">Click a star to rate</span>
+                        <span class="form-error" id="error-rating"></span>
+                    </div>
+
+                    <!-- Feedback Text -->
+                    <div class="form-group" id="group-fb-comment">
+                        <label for="fb-comment" class="form-label">Your Feedback</label>
+                        <textarea id="fb-comment" class="form-input form-textarea" rows="4" placeholder="What did you enjoy? What could be improved?" required></textarea>
+                        <span class="char-count"><span id="char-count">0</span>/500</span>
+                        <span class="form-error" id="error-fb-comment"></span>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="btn btn-primary btn-full" id="fb-submit" disabled>
+                        <span class="btn-text">Submit Feedback</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SUCCESS MODAL ============ -->
+    <div class="modal-overlay hidden" id="modal-overlay">
+        <div class="modal" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="modal-icon" id="modal-icon">✅</div>
+            <h3 class="modal-title" id="modal-title">Success!</h3>
+            <p class="modal-message" id="modal-message">Your action has been completed successfully.</p>
+            <button class="btn btn-primary" id="modal-close-btn">Got it</button>
+        </div>
+    </div>
+
+    <!-- ============ TOAST ============ -->
+    <div class="toast hidden" id="toast" role="alert" aria-live="polite">
+        <span class="toast-icon" id="toast-icon">✅</span>
+        <span class="toast-message" id="toast-message">Action completed</span>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 CampusHub — Campus Event Management System</p>
+            <p class="footer-note">Designed with HCI principles: Consistency · Visibility · Error Prevention · Simplicity</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
